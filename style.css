@@ -1,0 +1,42 @@
+body {
+    background-color: rgba(214, 55, 55, 0.883);
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+header {
+    margin-top: 50px;
+    font-style: italic;
+    font-size: large;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    margin: 50px auto;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+#questionone {
+    padding: 80px;
+    background-image: url('./img/fogo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+#questiontwo {
+    padding: 80px;
+    background-image: url('./img/agua.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
