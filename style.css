@@ -22,7 +22,7 @@ h2 {
     margin-bottom: 30px;
 }
 
-#questionone {
+#questionOne, #questionTwo {
     padding: 80px;
     background-image: url('./img/fogo.png');
     background-size: contain;
@@ -32,7 +32,7 @@ h2 {
     cursor: pointer;
 }
 
-#questiontwo {
+#questionTwo {
     padding: 80px;
     background-image: url('./img/agua.png');
     background-size: contain;
