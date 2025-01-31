@@ -40,3 +40,7 @@ h2 {
     background-position: center;
     cursor: pointer;
 }
+
+#pokemonImage {
+    display: none;
+}

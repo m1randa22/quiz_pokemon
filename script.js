@@ -1,5 +1,7 @@
 var totalPontos = 0;
 var questionIndex = 0;
+var pokemon_image = document.querySelector('#pokemonImage')
+var pokemon_name = document.querySelector('#pokemonName')
 
 const perguntas = [
     {
@@ -43,7 +45,7 @@ function atualizarPergunta() {
         document.getElementById("questionOne").style.backgroundImage = `url('${perguntaAtual.opcoes[0].imagem}')`;
         document.getElementById("questionTwo").style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
     } else {
-        document.getElementById("res").textContent = `Você fez ${totalPontos} pontos!`;
+        renderPokemon()
     }
 }
 
@@ -54,38 +56,30 @@ function adicionarPontos(pontos) {
     atualizarPergunta();
 }
 
-async function fetchPokemon(idPokemon) {
-    const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
-    const data = APIResponse.json;
+function obterIdPokemon() {
+    switch (totalPontos) {
+        case 5: return 25;  // Pikachu
+        case 6: return 1;   // Bulbasaur
+        case 7: return 10;  // Caterpie
+        case 8: return 4;   // Charmander
+        case 9: return 200; // Misdreavous
+        case 10: return 30; // Nidorina
+        default: return 132; // Ditto (caso o total de pontos não esteja mapeado)
+    }
+}
+
+async function fetchPokemon(pokemon) {
+    const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    const data = await APIResponse.json();
     return data;
 }
 
-async function renderPokemon(pokemon) {
+async function renderPokemon() {
     //TODO: Adicionar pokemon em seu devido ponto
-    const data = await fetchPokemon(pokemon);
-    var img = document.createElement('img')
-    img.setAttribute('id', 'foto')
+    let idPokemon = obterIdPokemon()
+    const data = await fetchPokemon(idPokemon);
 
-    switch (totalPontos) {
-        case 5:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        case 6:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        case 7:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        case 8:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        case 9:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        case 10:
-            img.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-            break;
-        default:
-            break;
-    }
+    pokemon_name.innerHTML = data.name;
+    pokemon_image.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+    document.getElementById('pokemonImage').style.display = "block"
 }
