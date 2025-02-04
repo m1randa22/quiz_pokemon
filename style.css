@@ -14,12 +14,14 @@ section {
     background-color: white;
     border-radius: 10px;
     padding: 15px;
-    width: 500px;
+    width: 600px;
     margin: 50px auto;
 }
 
 h2 {
     margin-bottom: 30px;
+    font-size: medium;
+    font-family: "Press Start 2P", serif;
 }
 
 #questionOne, #questionTwo {
@@ -42,5 +44,16 @@ h2 {
 }
 
 #pokemonImage {
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
     display: none;
+    image-rendering: pixelated;
 }
+
+#pokemonName {
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  

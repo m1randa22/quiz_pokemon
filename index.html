@@ -4,18 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Qual pokémon você seria?</title>
+    <title>Quiz Pokemon</title>
 </head>
 
 <body>
 
     <header>
-        <h1>Qual Pokémon você seria?</h1>
+        <h1>Quiz - Pokémon</h1>
     </header>
 
     <section>
-        <h2>Escolha uma das opções:</h2>
+        <h2 id="title">Escolha uma das opções:</h2>
         <div>
 
             <input type="button" name="questions" id="questionOne" onclick="adicionarPontos(1)">
@@ -27,7 +30,8 @@
             </label>
 
         </div>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif" alt="pokemon" id="pokemonImage">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
+            alt="pokemon" id="pokemonImage">
         <span id="pokemonName"></span>
         <div id="res"></div>
     </section>

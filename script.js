@@ -42,10 +42,11 @@ function atualizarPergunta() {
         const perguntaAtual = perguntas[questionIndex];
 
         // Atualiza as imagens de fundo dos botões
-        document.getElementById("questionOne").style.backgroundImage = `url('${perguntaAtual.opcoes[0].imagem}')`;
-        document.getElementById("questionTwo").style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
+        document.getElementById('questionOne').style.backgroundImage = `url('${perguntaAtual.opcoes[0].imagem}')`;
+        document.getElementById('questionTwo').style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
     } else {
-        renderPokemon()
+        document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'none'; });
+        renderPokemon();
     }
 }
 
@@ -75,11 +76,10 @@ async function fetchPokemon(pokemon) {
 }
 
 async function renderPokemon() {
-    //TODO: Adicionar pokemon em seu devido ponto
     let idPokemon = obterIdPokemon()
     const data = await fetchPokemon(idPokemon);
 
-    pokemon_name.innerHTML = data.name;
+    pokemon_name.innerHTML = `Parabéns!! você é o Pokémon: ${data.name.toUpperCase()}`;
     pokemon_image.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
     document.getElementById('pokemonImage').style.display = "block"
 }
