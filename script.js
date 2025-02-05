@@ -34,6 +34,25 @@ const perguntas = [
             { imagem: 'img/sol.png', pontos: 2 }
         ]
     }
+    ,
+    {
+        opcoes: [
+            { imagem: 'img/fada.png', pontos: 1 },
+            { imagem: 'img/dragao.png', pontos: 2 }
+        ]
+    },
+    {
+        opcoes: [
+            { imagem: 'img/cachorro.png', pontos: 1 },
+            { imagem: 'img/gato.png', pontos: 2 }
+        ]
+    },
+    {
+        opcoes: [
+            { imagem: 'img/moto.png', pontos: 1 },
+            { imagem: 'img/carro.png', pontos: 2 }
+        ]
+    }
 ];
 
 // Função para atualizar as opções de imagem para a próxima pergunta
@@ -46,26 +65,51 @@ function atualizarPergunta() {
         document.getElementById('questionTwo').style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
     } else {
         document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'none'; });
+        document.getElementById('restart').style.display = 'block';
         renderPokemon();
+
     }
 }
 
 // Função para somar os pontos e passar para a próxima pergunta
 function adicionarPontos(pontos) {
     totalPontos += pontos;
-    questionIndex++; // Avança para a próxima pergunta
+    questionIndex++;
     atualizarPergunta();
 }
 
 function obterIdPokemon() {
     switch (totalPontos) {
-        case 5: return 25;  // Pikachu
-        case 6: return 1;   // Bulbasaur
-        case 7: return 10;  // Caterpie
-        case 8: return 4;   // Charmander
-        case 9: return 200; // Misdreavous
-        case 10: return 30; // Nidorina
-        default: return 132; // Ditto (caso o total de pontos não esteja mapeado)
+        case 8:
+            document.body.style.backgroundColor = "#FF5733"; // Charmander
+            return 4; 
+        case 9:
+            document.body.style.backgroundColor = "#4CAF50"; // Bulbasaur
+            return 1;
+        case 10:
+            document.body.style.backgroundColor = "#A020F0"; // Mewtwo
+            return 150;
+        case 11:
+            document.body.style.backgroundColor = "#3498DB"; // Squirtle
+            return 7;
+        case 12:
+            document.body.style.backgroundColor = "#FFD700"; // Pikachu
+            return 25;
+        case 13:
+            document.body.style.backgroundColor = "#D2691E"; // Eevee
+            return 133;
+        case 14:
+            document.body.style.backgroundColor = "#90EE90"; // Caterpie
+            return 10;
+        case 15:
+            document.body.style.backgroundColor = "#2F4F4F"; // Snorlax
+            return 143;
+        case 16:
+            document.body.style.backgroundColor = "#696969"; // Onix
+            return 95;
+        default:
+            document.body.style.backgroundColor = "#FF69B4"; // Ditto - Caso o número de pontos seja imcompatível
+            return 132
     }
 }
 
@@ -79,7 +123,27 @@ async function renderPokemon() {
     let idPokemon = obterIdPokemon()
     const data = await fetchPokemon(idPokemon);
 
-    pokemon_name.innerHTML = `Parabéns!! você é o Pokémon: ${data.name.toUpperCase()}`;
+    pokemon_name.innerHTML = `Parabéns!! Você é o Pokémon: ${data.name.toUpperCase()}`;
     pokemon_image.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
     document.getElementById('pokemonImage').style.display = "block"
 }
+
+function reiniciarJogo() {
+    totalPontos = 0;
+    questionIndex = 0;
+
+    document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'block'; });
+
+    pokemon_image.style.display = "none";
+    pokemon_name.innerHTML = "";
+    document.getElementById('restart').style.display = 'none';
+
+    document.getElementById('questionOne').style.backgroundImage = 'none';
+    document.getElementById('questionTwo').style.backgroundImage = 'none';
+
+    document.body.style.backgroundColor = 'rgba(244, 34, 34, 0.883)';
+
+    atualizarPergunta();
+}
+
+document.getElementById("restart").addEventListener("click", reiniciarJogo);
