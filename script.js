@@ -6,51 +6,51 @@ var pokemon_name = document.querySelector('#pokemonName')
 const perguntas = [
     {
         opcoes: [
-            { imagem: 'img/fogo.png', pontos: 1 },
-            { imagem: 'img/agua.png', pontos: 2 }
+            { nome: 'Fogo', imagem: 'img/fogo.png', pontos: 1 },
+            { nome: 'Água', imagem: 'img/agua.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/coxinha.png', pontos: 1 },
-            { imagem: 'img/rosquinha.png', pontos: 2 }
+            { nome: 'Salgado', imagem: 'img/coxinha.png', pontos: 1 },
+            { nome: 'Doce', imagem: 'img/rosquinha.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/videogame.png', pontos: 1 },
-            { imagem: 'img/livro.png', pontos: 2 }
+            { nome: 'Jogar', imagem: 'img/videogame.png', pontos: 1 },
+            { nome: 'Ler', imagem: 'img/livro.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/amigos.png', pontos: 1 },
-            { imagem: 'img/sozinho.png', pontos: 2 }
+            { nome: 'Amigos', imagem: 'img/amigos.png', pontos: 1 },
+            { nome: 'Sozinho(a)', imagem: 'img/sozinho.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/lua.png', pontos: 1 },
-            { imagem: 'img/sol.png', pontos: 2 }
+            { nome: 'Noite', imagem: 'img/lua.png', pontos: 1 },
+            { nome: 'Dia', imagem: 'img/sol.png', pontos: 2 }
         ]
     }
     ,
     {
         opcoes: [
-            { imagem: 'img/fada.png', pontos: 1 },
-            { imagem: 'img/dragao.png', pontos: 2 }
+            { nome: 'Fada', imagem: 'img/fada.png', pontos: 1 },
+            { nome: 'Dragão', imagem: 'img/dragao.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/cachorro.png', pontos: 1 },
-            { imagem: 'img/gato.png', pontos: 2 }
+            { nome: 'Cachorro', imagem: 'img/cachorro.png', pontos: 1 },
+            { nome: 'Gato', imagem: 'img/gato.png', pontos: 2 }
         ]
     },
     {
         opcoes: [
-            { imagem: 'img/moto.png', pontos: 1 },
-            { imagem: 'img/carro.png', pontos: 2 }
+            { nome: 'Moto', imagem: 'img/moto.png', pontos: 1 },
+            { nome: 'Carro', imagem: 'img/carro.png', pontos: 2 }
         ]
     }
 ];
@@ -61,10 +61,12 @@ function atualizarPergunta() {
 
         document.getElementById('questionOne').style.backgroundImage = `url('${perguntaAtual.opcoes[0].imagem}')`;
         document.getElementById('questionTwo').style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
+        document.querySelector('#textOne').innerText = perguntaAtual.opcoes[0].nome;
+        document.querySelector('#textTwo').innerText = perguntaAtual.opcoes[1].nome;
     } else {
 
         document.getElementById('loading').style.display = 'block';
-        document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'none'; });
+        document.querySelectorAll('#questionOne, #questionTwo, #title, #text').forEach(el => { el.style.display = 'none'; });
 
         setTimeout(() => {
 
@@ -136,14 +138,11 @@ function reiniciarJogo() {
     totalPontos = 0;
     questionIndex = 0;
 
-    document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'block'; });
+    document.querySelectorAll('#questionOne, #questionTwo, #title, #text').forEach(el => { el.style.display = 'block'; });
 
     pokemon_image.style.display = "none";
     pokemon_name.innerHTML = "";
     document.getElementById('restart').style.display = 'none';
-
-    document.getElementById('questionOne').style.backgroundImage = 'none';
-    document.getElementById('questionTwo').style.backgroundImage = 'none';
 
     document.body.style.backgroundColor = 'rgba(244, 34, 34, 0.883)';
 

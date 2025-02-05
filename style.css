@@ -19,7 +19,7 @@ section {
 }
 
 h2 {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-family: "Press Start 2P", serif;
 }
 
@@ -29,12 +29,31 @@ h2 {
     gap: 30px;
 }
 
-#questionOne, #questionTwo {
+#textOne, #textTwo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-family: "Press Start 2P", serif;
+}
+
+#questionOne {
     padding: 80px;
+    background-image: url('./img/fogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    position: relative;
+}
+
+#questionTwo {
+    padding: 80px;
+    background-image: url('./img/agua.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
 }
 
 #loading {
