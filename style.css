@@ -31,20 +31,16 @@ h2 {
 
 #questionOne, #questionTwo {
     padding: 80px;
-    background-image: url('./img/fogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
 
-#questionTwo {
+#loading {
+    margin: auto;
+    display: none;
     padding: 80px;
-    background-image: url('./img/agua.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
 }
 
 #pokemonImage {

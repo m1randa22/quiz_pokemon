@@ -55,23 +55,27 @@ const perguntas = [
     }
 ];
 
-// Função para atualizar as opções de imagem para a próxima pergunta
 function atualizarPergunta() {
     if (questionIndex < perguntas.length) {
         const perguntaAtual = perguntas[questionIndex];
 
-        // Atualiza as imagens de fundo dos botões
         document.getElementById('questionOne').style.backgroundImage = `url('${perguntaAtual.opcoes[0].imagem}')`;
         document.getElementById('questionTwo').style.backgroundImage = `url('${perguntaAtual.opcoes[1].imagem}')`;
     } else {
-        document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'none'; });
-        document.getElementById('restart').style.display = 'block';
-        renderPokemon();
 
+        document.getElementById('loading').style.display = 'block';
+        document.querySelectorAll('#questionOne, #questionTwo, #title').forEach(el => { el.style.display = 'none'; });
+
+        setTimeout(() => {
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('restart').style.display = 'block';
+            renderPokemon();
+
+        }, 3000);
     }
 }
 
-// Função para somar os pontos e passar para a próxima pergunta
 function adicionarPontos(pontos) {
     totalPontos += pontos;
     questionIndex++;
@@ -82,7 +86,7 @@ function obterIdPokemon() {
     switch (totalPontos) {
         case 8:
             document.body.style.backgroundColor = "#FF5733"; // Charmander
-            return 4; 
+            return 4;
         case 9:
             document.body.style.backgroundColor = "#4CAF50"; // Bulbasaur
             return 1;
