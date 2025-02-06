@@ -24,6 +24,7 @@ body {
     background-color: black;
     z-index: -1;
     transform: translateY(-50%);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 main {
@@ -101,4 +102,5 @@ input[type= 'button'] {
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(80, 234, 53);
+    cursor: pointer;
 }
