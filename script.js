@@ -25,7 +25,7 @@ const perguntas = [
     {
         opcoes: [
             { nome: 'Amigos', imagem: 'img/amigos.png', pontos: 1 },
-            { nome: 'Sozinho(a)', imagem: 'img/sozinho.png', pontos: 2 }
+            { nome: 'Sozinho', imagem: 'img/sozinho.png', pontos: 2 }
         ]
     },
     {
@@ -129,7 +129,7 @@ async function renderPokemon() {
     let idPokemon = obterIdPokemon()
     const data = await fetchPokemon(idPokemon);
 
-    pokemon_name.innerHTML = `Parabéns!! Você é o Pokémon: ${data.name.toUpperCase()}`;
+    pokemon_name.innerHTML = `Parabéns!! </br> Você seria o Pokémon: ${data.name.toUpperCase()}`;
     pokemon_image.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
     document.getElementById('pokemonImage').style.display = "block"
 }
